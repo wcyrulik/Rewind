@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Walt Cyrulik</title>
+    <title>REWIND: A Coding Project by Walt Cyrulik</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="img/WGC-Mark.png" class="d-inline-block allign-text-top" 
-            alt="W Cyrulik Logo" width="30" height="24"> APP NAME</a>
+            alt="W Cyrulik Logo" width="30" height="24"> REWIND</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/wcyrulik/Rewind">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="#">About</a>
@@ -55,21 +55,60 @@
 <!-- ==== Main Section ====-->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for App Name</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for REWIND</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld() {
-                            alert("Hello World");
-                        }
                     </code>
-                   </pre>
+                    // Get the string from the page
+                    function getValue() {
+                    
+                        document.getElementById("alert").classList.add("invisible");
+                        let userString = document.getElementById("userString").value;
+                        let revString = reverseString(userString);
+                        displayString(revString);
+                    }
+                    
+                    //Reverse the string
+                    function reverseString(userString){
+                        let revString = "";
+                        for (let index = userString.length - 1; index >= 0; index--) {
+                            revString += userString[index]; 
+                        }
+                        return revString;
+                    }
+                    
+                    //Display the reversed string back on the page.
+                    function displayString(revstring){
+                        document.getElementById("msg").innerHTML = `Your string reversed is: ${revstring}`;
+                        document.getElementById("alert").classList.remove("invisible");
+                    }
+                    
+                    
+                </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The code is structured in three function.</p>
+                    <h5>getValue</h5>
+                    <p>This function is invoked by the click event listener defined in app.html.  The
+                        functions receives input from the UI
+                        and calls the reverseString function, and then the displayString function.
+                    </p>
+                    
+                    <h5>reverseString</h5>
+                    <p>The function receives the string entered by the user, and treats it
+                        like an array.  The function loops through the string from the end
+                        to the beginning.  Each time through the reverse string is built by
+                        adding each letter to the reverse string.  The resultant string
+                        is returned to the calling function getValue.
+                    </p>
+                    <h5>displayString</h5>
+                    <p>The displayString function builds and uses a template literal to
+                        insert the reversed string into the alert box being used on the 
+                        page to highlight the output.  The function ends by removing the
+                        invisible class from the alert message area, thus drawing attention
+                        to the output.
+                    </p>
                 </div>
             </div>
         </div>
